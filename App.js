@@ -17,16 +17,9 @@ import {
   FlatList,
 } from 'react-native';
 
-// import Login from './components/Login';
-// const App = () => {
-//   return(
-//     <View>
-//       {/* <Text>Welcome to React Native</Text> */}
-//       <Login/>
-//     </View>
-//   )
-  
-// };
+import { API_HOST } from './config';
+import {APIConfig} from './config/api.config';
+
 class App extends React.Component{
   constructor(){
     super();
@@ -38,7 +31,7 @@ class App extends React.Component{
     this.callApi();
   }
   async callApi(){
-    let response = await fetch('https://reactnative.dev/movies.json');
+    let response = await fetch(API_HOST + APIConfig.movies);
     let responseJson = await response.json();
     this.setState({data:responseJson.movies})
   }
